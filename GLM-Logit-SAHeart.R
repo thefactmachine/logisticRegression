@@ -142,21 +142,3 @@ apply(mapply(table, lstBlnPredict050, lstTestData),1, sum)
 lstBlnPredict025 <- lapply(lstProbs, function(x) ifelse(x > 0.25, T, F))
 print("table elements for threshold 0.25")
 apply(mapply(table, lstBlnPredict025, lstTestData),1, sum)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
