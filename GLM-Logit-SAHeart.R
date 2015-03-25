@@ -1,12 +1,16 @@
 rm(list=ls(all=TRUE))
-library(plyr)
-library(ggplot2)
-setwd('/Users/zurich/Google Drive/FactMachine-SITE/FM-Site-STRUCTURE/13-LogisticRegression')
+library(plyr) #for The MapValues function
+library(ggplot2) # ggplot2
+library(RCurl) # getURL
+
 
 #=======================================
 # Data preparation section
 
-dfSA <- read.csv("SAHeart.csv")
+x <- getURL("https://raw.githubusercontent.com/thefactmachine/logisticRegression/master/SAHeart.csv")
+dfSA <- read.csv(text = x,  header = TRUE, sep = ",")
+
+#dfSA <- read.csv("SAHeart.csv")
 dfSA$row.names <- NULL
 # recode 0,1 as true / false
 chdVector <- mapvalues(dfSA$chd, from = c(0,1), to = c("FALSE", "TRUE"))
